@@ -48,3 +48,6 @@ install.packages("roxygen2")
 
 library(devtools)
 devtools::document()
+
+usethis::use_github_action("check-standard")
+
