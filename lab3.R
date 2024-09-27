@@ -2,6 +2,7 @@
 #
 #' @param a The first number.
 #' @param b The second number. 
+#' @export
 #' @description This function computes the greatest common divisor of two numbers.
 #' @return The greatest common divisor of two numbers.
 #' @references https://en.wikipedia.org/wiki/Euclidean_algorithm
@@ -20,6 +21,7 @@ euclidean<- function(a,b){
 #
 #' @param graph A data frame representing the graph, with columns for edges and weights.
 #' @param init_node The starting node for the algorithm. 
+#' @export
 #' @description This function computes the shortest paths from a given starting node to all other nodes in a graph.
 #' @return A vector of shortest distances from the starting node to all other nodes.
 #' @references https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
@@ -51,3 +53,19 @@ devtools::document()
 
 usethis::use_github_action("check-standard")
 
+
+wiki_graph <-
+  data.frame(v1=c(1,1,1,2,2,2,3,3,3,3,4,4,4,5,5,6,6,6),
+             v2=c(2,3,6,1,3,4,1,2,4,6,2,3,5,4,6,1,3,5),
+             w=c(7,9,14,7,10,15,9,10,11,2,15,11,6,6,9,14,2,9))
+save(wiki_graph, file = "data/wiki_graph.RData")
+
+
+list.files()
+if (!dir.exists("data")) {
+  dir.create("data")
+}
+
+roxygen2::roxygenise()
+
+?wiki_graph

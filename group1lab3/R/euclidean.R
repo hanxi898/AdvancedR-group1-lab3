@@ -2,6 +2,7 @@
 #
 #' @param a The first number.
 #' @param b The second number. 
+#' @export
 #' @description This function computes the greatest common divisor of two numbers.
 #' @return The greatest common divisor of two numbers.
 #' @references https://en.wikipedia.org/wiki/Euclidean_algorithm

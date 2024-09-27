@@ -2,6 +2,7 @@
 #
 #' @param graph A data frame representing the graph, with columns for edges and weights.
 #' @param init_node The starting node for the algorithm. 
+#' @export
 #' @description This function computes the shortest paths from a given starting node to all other nodes in a graph.
 #' @return A vector of shortest distances from the starting node to all other nodes.
 #' @references https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
