@@ -1,3 +1,5 @@
+install.packages("igraph")
+library(igraph)
 #'euclidean: 
 #
 #' @param a The first number.
@@ -65,7 +67,11 @@ list.files()
 if (!dir.exists("data")) {
   dir.create("data")
 }
-
 roxygen2::roxygenise()
 
 ?wiki_graph
+
+usethis::use_test()
+
+library(testthat) 
+test_dir("tests/testthat") 
