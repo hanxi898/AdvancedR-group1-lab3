@@ -1,7 +1,7 @@
 #'wiki_graph
 #'
 #' A dataset containing the graph data extracted from a Wikipedia page.
-#' 
+#' @export
 #' @format A data frame with the following columns:
 #' \describe{
 #'   \item{v1}{The edges of the graph}
