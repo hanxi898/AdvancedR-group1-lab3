@@ -1,4 +1,4 @@
-#euclidean: 
+#'euclidean: 
 #
 #' @param a The first number.
 #' @param b The second number. 
@@ -16,7 +16,7 @@ euclidean<- function(a,b){
   return(a)
 }
 
-#dijkstra: 
+#'dijkstra: 
 #
 #' @param graph A data frame representing the graph, with columns for edges and weights.
 #' @param init_node The starting node for the algorithm. 
@@ -44,3 +44,7 @@ devtools::load_all()
 rm(list = c("dijkstra",
             "euclidean"))
 rm(list = ls())
+install.packages("roxygen2")
+
+library(devtools)
+devtools::document()
