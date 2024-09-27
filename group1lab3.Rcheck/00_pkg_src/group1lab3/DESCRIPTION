@@ -9,7 +9,8 @@ Description: The R package provides a range of convenient data analysis function
 License: GPL-3
 Encoding: UTF-8
 RoxygenNote: 7.3.2
-Suggests: 
-    testthat (>= 3.0.0)
+Suggests: testthat (>= 3.0.0)
 Config/testthat/edition: 3
-
+NeedsCompilation: no
+Packaged: 2024-09-27 18:18:04 UTC; 0529y
+Depends: R (>= 3.5.0)

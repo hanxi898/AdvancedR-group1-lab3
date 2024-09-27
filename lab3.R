@@ -1,5 +1,4 @@
-install.packages("igraph")
-library(igraph)
+
 #'euclidean: 
 #
 #' @param a The first number.
@@ -27,16 +26,47 @@ euclidean<- function(a,b){
 #' @description This function computes the shortest paths from a given starting node to all other nodes in a graph.
 #' @return A vector of shortest distances from the starting node to all other nodes.
 #' @references https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
-dijkstra <- function(graph,init_node){
-  g <- graph_from_data_frame(graph, directed = TRUE) 
+dijkstra <- function(graph, init_node) {
+
   required <- c("v1", "v2", "w")
   stopifnot(is.data.frame(graph))
-  stopifnot(all(required %in% names(graph)) )
-  stopifnot(is.numeric(init_node) , length(init_node)==1)
-  stopifnot(init_node %in% V(g))
-  shortest_distance <- distances(g, v = init_node, to = V(g), weights = E(g)$w, algorithm = "dijkstra")
-  sd <- as.vector(shortest_distance)
-  return(sd)
+  stopifnot(all(required %in% names(graph)))
+  stopifnot(is.numeric(init_node), length(init_node) == 1)
+
+  if (!init_node %in% unique(c(graph$v1, graph$v2))) {
+    stop("The initial node must exist in the graph.")
+  }
+
+  nodes <- unique(c(graph$v1, graph$v2))
+  distances <- rep(Inf, length(nodes))
+  names(distances) <- nodes
+  distances[as.character(init_node)] <- 0
+
+  priority_queue <- list()
+
+  priority_queue[[as.character(init_node)]] <- 0
+  
+  while (length(priority_queue) > 0) {
+    current_node <- names(which.min(unlist(priority_queue)))
+    current_distance <- priority_queue[[current_node]]
+    priority_queue[[current_node]] <- NULL
+
+    neighbors <- graph[graph$v1 == as.numeric(current_node), ]
+    
+    for (i in seq_len(nrow(neighbors))) {
+      neighbor <- neighbors$v2[i]
+      edge_weight <- neighbors$w[i]
+
+      new_distance <- current_distance + edge_weight
+
+      if (new_distance < distances[as.character(neighbor)]) {
+        distances[as.character(neighbor)] <- new_distance
+        priority_queue[[as.character(neighbor)]] <- new_distance
+      }
+    }
+  }
+
+  return(as.numeric(distances[as.character(nodes)]))
 }
 
 package.skeleton(name = "group1lab3")
@@ -62,7 +92,6 @@ wiki_graph <-
              w=c(7,9,14,7,10,15,9,10,11,2,15,11,6,6,9,14,2,9))
 save(wiki_graph, file = "data/wiki_graph.RData")
 
-
 list.files()
 if (!dir.exists("data")) {
   dir.create("data")
@@ -76,4 +105,4 @@ usethis::use_test()
 library(testthat) 
 test_dir("tests/testthat") 
 
-
+rm(list = c("dijkstra", "euclidean"))
