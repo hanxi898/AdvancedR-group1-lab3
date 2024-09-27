@@ -1,0 +1,11 @@
+Package: group1ab3
+Type: Package
+Title: Data analysis package
+Version: 1.0
+Date: 2024-09-27
+Author: Can Wang <canwa869@student.liu.se>, Han Xia <hanxi898@student.liu.se>
+Maintainer: Can Wang <canwa869@student.liu.se>, Han Xia <hanxi898@student.liu.se>
+Description: The R package provides a range of convenient data analysis functions for statistical analysis tasks.
+License: GPL-3
+Encoding: UTF-8
+RoxygenNote: 7.3.2
